@@ -12,8 +12,15 @@ const Box = () => {
     setInput("");
   };
 
+  const handleInputVazio = () => {
+    alert("O campo não pode ficar vazio!");
+  };
+
   const handleBotaoAdicionar = () => {
-    if (!input) return;
+    if (!input) {
+      handleInputVazio();
+      return;
+    }
     handleAdicionarItem();
   };
 
