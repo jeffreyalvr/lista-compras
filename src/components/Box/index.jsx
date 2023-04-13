@@ -89,7 +89,7 @@ const Box = () => {
           <span>
             {mensagemErro || "Algo deu errado"}{" "}
             <button
-              onClick={() => handleRemoverItem(item.id)}
+              onClick={handleFecharErro}
               className="bg-[#a1a1a1] outline-0 text-xs font-bold	hover:bg-[#b8b8b8] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
             >
               x
