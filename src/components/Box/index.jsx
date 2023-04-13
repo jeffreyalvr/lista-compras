@@ -53,7 +53,7 @@ const Box = () => {
         />
         <button
           onClick={handleBotaoAdicionar}
-          className="bg-[#ff4b4b] outline-0	hover:bg-[#ff7b7b] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
+          className="bg-[#4baeff] outline-0	hover:bg-[#62b8ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
         >
           Adicionar
         </button>
