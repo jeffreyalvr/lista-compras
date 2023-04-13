@@ -38,6 +38,17 @@ const Box = () => {
     handleVerificaLista();
   };
 
+  const handleRemoverItem = (itemId) => {
+    const novaLista = lista.filter((item) => item.id !== itemId);
+    console.log(
+      `apagando o item de id ${itemId}: ${lista
+        .filter((item) => item.id === itemId)
+        .map((item) => item.nome)}`
+    );
+    console.table(novaLista);
+    setLista(novaLista);
+  };
+
   const handleAdicionarItem = () => {
     setLista((prevState) => [
       ...prevState,
@@ -49,7 +60,7 @@ const Box = () => {
   return (
     <div className="w-[43rem] border border-[#dadada] rounded-lg my-10">
       <div className="p-[1.8rem]">
-        {!lista ? (
+        {lista.length <= 0 ? (
           <span>A lista de itens está vazia.</span>
         ) : (
           lista.map((item) => (
@@ -59,7 +70,7 @@ const Box = () => {
             >
               {item.nome + ` (${item.id})`}{" "}
               <button
-                onClick={handleBotaoAdicionar}
+                onClick={() => handleRemoverItem(item.id)}
                 className="bg-[#ff4b4b] outline-0 text-xs font-bold	hover:bg-[#ff6262] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
               >
                 x
