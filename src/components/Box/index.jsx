@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import icon_edit from "../../assets/icons/edit.png";
 import icon_delete from "../../assets/icons/delete.png";
@@ -15,6 +15,8 @@ const Box = () => {
   const [mensagemDisclaimer, setMensagemDisclaimer] = useState("");
   const [modoEdicao, setModoEdicao] = useState(false);
   const [idSelecionado, setIdSelecionado] = useState(null);
+
+  const campo_texto = useRef();
 
   const handleAlterarInput = (e) => {
     if (input.length === 55) {
@@ -97,6 +99,8 @@ const Box = () => {
       .map((item) => item.nome);
 
     setInput(itemParaEditar);
+
+    campo_texto.current.focus();
   };
 
   const handleConfirmarAtualizacao = () => {
@@ -142,13 +146,13 @@ const Box = () => {
               <div className="flex justify-between max-w-[140px]">
                 <button
                   onClick={() => handleEditarItem(item.id)}
-                  className="bg-[#4bc9ff] outline-0 text-xs font-bold	hover:bg-[#6cd3ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 w-auto box-content align-middle"
+                  className="bg-[#4bc9ff] outline-1 text-xs font-bold	hover:bg-[#6cd3ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 w-auto box-content align-middle"
                 >
                   <img src={icon_edit} alt="editar" title="editar" />
                 </button>
                 <button
                   onClick={() => handleRemoverItem(item.id)}
-                  className="bg-[#ff4b4b] outline-0 text-xs font-bold	hover:bg-[#ff6262] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 w-auto box-content align-middle"
+                  className="bg-[#ff4b4b] outline-1 text-xs font-bold	hover:bg-[#ff6262] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 w-auto box-content align-middle"
                 >
                   <img src={icon_delete} alt="excluir" title="excluir" />
                 </button>
@@ -168,7 +172,7 @@ const Box = () => {
           <span>{mensagemDisclaimer || "Algo deu errado"} </span>
           <button
             onClick={handleFecharDisclaimer}
-            className="bg-[#a1a1a1] outline-0 text-xs font-bold	hover:bg-[#b8b8b8] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
+            className="bg-[#a1a1a1] outline-1 text-xs font-bold	hover:bg-[#b8b8b8] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
           >
             x
           </button>
@@ -177,21 +181,22 @@ const Box = () => {
       <div className="border-t border-[#dadada] p-[1.8rem]">
         <input
           type="text"
-          className="w-full py-[0.625rem] px-[1.25rem] outline-0 mb-[0.938rem] rounded-[1.25rem] border border-[rgba(218, 218, 218, 0.466)]"
+          className="w-full py-[0.625rem] px-[1.25rem] outline-1 mb-[0.938rem] rounded-[1.25rem] border border-[rgba(218, 218, 218, 0.466)]"
           placeholder="Adicione um novo item"
           value={input}
           onChange={(e) => handleAlterarInput(e)}
+          ref={campo_texto}
         />
         <button
           onClick={handleBotaoAdicionar}
-          className="bg-[#4baeff] text-xs font-bold outline-0	hover:bg-[#62b8ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
+          className="bg-[#4baeff] text-xs font-bold outline-1	hover:bg-[#62b8ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
         >
           {modoEdicao ? "Confirmar alteração" : "Adicionar"}
         </button>
         {input && (
           <button
             onClick={handleCancelar}
-            className="bg-[#a8a8a8] text-xs font-bold outline-0 hover:bg-[#b1b1b1] ml-[0.625rem] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
+            className="bg-[#a8a8a8] text-xs font-bold outline-1 hover:bg-[#b1b1b1] ml-[0.625rem] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
           >
             Cancelar
           </button>
