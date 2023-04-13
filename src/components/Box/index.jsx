@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
 const Box = () => {
-  const [lista, setLista] = useState(["arroz", "feijão", "macarrão", "açúcar"]);
+  const [lista, setLista] = useState([
+    { id: 0, nome: "arroz" },
+    { id: 1, nome: "feijão" },
+    { id: 2, nome: "macarrão" },
+    { id: 3, nome: "açúcar" },
+  ]);
   const [input, setInput] = useState("");
 
   const handleAlterarInput = (e) => {
@@ -13,7 +18,7 @@ const Box = () => {
   };
 
   const handleVerificaLista = () => {
-    if (lista.includes(input)) {
+    if (lista.find((item) => item.nome === input)) {
       alert(`Já há o item ${input} na lista!`);
       return;
     }
@@ -34,7 +39,10 @@ const Box = () => {
   };
 
   const handleAdicionarItem = () => {
-    setLista((prevState) => [...prevState, input]);
+    setLista((prevState) => [
+      ...prevState,
+      { id: prevState.length, nome: input },
+    ]);
     limparInput();
   };
 
@@ -45,8 +53,17 @@ const Box = () => {
           <span>A lista de itens está vazia.</span>
         ) : (
           lista.map((item) => (
-            <div className="py-2 border-dotted border-b border-[#dadada]">
-              {item}
+            <div
+              className="py-2 border-dotted border-b border-[#dadada]"
+              key={item.id}
+            >
+              {item.nome + ` (${item.id})`}{" "}
+              <button
+                onClick={handleBotaoAdicionar}
+                className="bg-[#ff4b4b] outline-0 text-xs font-bold	hover:bg-[#ff6262] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
+              >
+                x
+              </button>
             </div>
           ))
         )}
