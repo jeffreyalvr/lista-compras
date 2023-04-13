@@ -56,12 +56,14 @@ const Box = () => {
         >
           Adicionar
         </button>
-        <button
-          onClick={limparInput}
-          className="bg-[#a8a8a8] outline-0 hover:bg-[#b1b1b1] ml-[0.625rem] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
-        >
-          Cancelar
-        </button>
+        {input && (
+          <button
+            onClick={limparInput}
+            className="bg-[#a8a8a8] outline-0 hover:bg-[#b1b1b1] ml-[0.625rem] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
+          >
+            Cancelar
+          </button>
+        )}
       </div>
     </div>
   );
