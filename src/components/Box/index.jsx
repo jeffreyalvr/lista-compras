@@ -12,6 +12,14 @@ const Box = () => {
     setInput("");
   };
 
+  const handleVerificaLista = () => {
+    if (lista.includes(input)) {
+      alert(`Já há o item ${input} na lista!`);
+      return;
+    }
+    handleAdicionarItem();
+  };
+
   const handleInputVazio = () => {
     alert("O campo não pode ficar vazio!");
   };
@@ -22,7 +30,7 @@ const Box = () => {
       handleInputVazio();
       return;
     }
-    handleAdicionarItem();
+    handleVerificaLista();
   };
 
   const handleAdicionarItem = () => {
