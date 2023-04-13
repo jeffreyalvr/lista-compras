@@ -8,6 +8,8 @@ const Box = () => {
     { id: 3, nome: "açúcar" },
   ]);
   const [input, setInput] = useState("");
+  const [mostrarErro, setMostrarErro] = useState(false);
+  const [mensagemErro, setMensagemErro] = useState("");
 
   const handleAlterarInput = (e) => {
     setInput(e.target.value);
@@ -17,16 +19,25 @@ const Box = () => {
     setInput("");
   };
 
+  const handleMostrarErro = (status, mensagem) => {
+    setMensagemErro(mensagem);
+    setMostrarErro(status);
+  };
+
+  const handleFecharErro = () => {
+    setMostrarErro(false);
+  };
+
   const handleVerificaLista = () => {
     if (lista.find((item) => item.nome === input)) {
-      alert(`Já há o item ${input} na lista!`);
+      handleMostrarErro(true, `Já há o item ${input} na lista!`);
       return;
     }
     handleAdicionarItem();
   };
 
   const handleInputVazio = () => {
-    alert("O campo não pode ficar vazio!");
+    handleMostrarErro(true, "O campo não pode ficar vazio!");
   };
 
   const handleBotaoAdicionar = () => {
@@ -40,12 +51,6 @@ const Box = () => {
 
   const handleRemoverItem = (itemId) => {
     const novaLista = lista.filter((item) => item.id !== itemId);
-    console.log(
-      `apagando o item de id ${itemId}: ${lista
-        .filter((item) => item.id === itemId)
-        .map((item) => item.nome)}`
-    );
-    console.table(novaLista);
     setLista(novaLista);
   };
 
@@ -68,7 +73,7 @@ const Box = () => {
               className="py-2 border-dotted border-b border-[#dadada]"
               key={item.id}
             >
-              {item.nome + ` (${item.id})`}{" "}
+              {item.nome}{" "}
               <button
                 onClick={() => handleRemoverItem(item.id)}
                 className="bg-[#ff4b4b] outline-0 text-xs font-bold	hover:bg-[#ff6262] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
@@ -79,6 +84,19 @@ const Box = () => {
           ))
         )}
       </div>
+      {mostrarErro ? (
+        <div className="border-t border-[#dadada] bg-[#fff4f4] text-[firebrick] p-[1.8rem]">
+          <span>
+            {mensagemErro || "Algo deu errado"}{" "}
+            <button
+              onClick={() => handleRemoverItem(item.id)}
+              className="bg-[#a1a1a1] outline-0 text-xs font-bold	hover:bg-[#b8b8b8] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
+            >
+              x
+            </button>
+          </span>
+        </div>
+      ) : null}
       <div className="border-t border-[#dadada] p-[1.8rem]">
         <input
           type="text"
