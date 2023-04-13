@@ -119,7 +119,7 @@ const Box = () => {
   };
 
   return (
-    <div className="w-[43rem] border border-[#dadada] rounded-lg my-10">
+    <div className="animate-move-up w-[43rem] border border-[#dadada] rounded-lg my-10">
       <div className="p-[1.8rem]">
         {lista.length <= 0 ? (
           <span>A lista de itens está vazia.</span>
@@ -129,7 +129,7 @@ const Box = () => {
               className="py-2 border-dotted border-b border-[#dadada]"
               key={item.id}
             >
-              {item.nome + item.id}{" "}
+              {item.nome}{" "}
               <button
                 onClick={() => handleEditarItem(item.id)}
                 className="bg-[#4bc9ff] outline-0 text-xs font-bold	hover:bg-[#6cd3ff] text-white rounded-[1.25rem] px-2 mx-0.5 h-[20px] w-auto box-content align-middle"
@@ -148,7 +148,7 @@ const Box = () => {
       </div>
       {mostrarDisclaimer ? (
         <div
-          className={`border-t border-[#dadada] p-[1.8rem] flex justify-between ${
+          className={`animate-fade-in border-t border-[#dadada] p-[1.8rem] flex justify-between ${
             modoEdicao
               ? "bg-[#f4faff] text-[steelblue]"
               : "bg-[#fff4f4] text-[firebrick]"
