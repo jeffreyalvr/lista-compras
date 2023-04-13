@@ -17,7 +17,8 @@ const Box = () => {
   };
 
   const handleBotaoAdicionar = () => {
-    if (!input) {
+    // verifica se o input está vazio ou se possui apenas espaços
+    if (!input || /^\s+$/.test(input)) {
       handleInputVazio();
       return;
     }
