@@ -36,7 +36,7 @@ const Box = () => {
 
   const handleVerificaLista = () => {
     if (lista.find((item) => item.nome === input)) {
-      handleMostrarDisclaimer(true, `Já há o item ${input} na lista!`);
+      handleMostrarDisclaimer(true, `Já há o item '${input}' na lista!`);
       return;
     }
     handleAdicionarItem();
@@ -101,7 +101,16 @@ const Box = () => {
   };
 
   const handleAdicionarItem = () => {
-    const ultimoIdUsado = Math.max(...lista.map((item) => item.id));
+    let ultimoIdUsado;
+
+    /* caso não haja itens na lista, o valor retornado será Infinity; como o id
+    será 'ultimoIdUsado + 1', então setá-lo como '-1' irá fazer com que ele
+    seja atribuído como '0' na primeira iteração. */
+
+    lista.length <= 0
+      ? (ultimoIdUsado = -1)
+      : (ultimoIdUsado = Math.max(...lista.map((item) => item.id)));
+
     setLista((prevState) => [
       ...prevState,
       { id: ultimoIdUsado + 1, nome: input },
