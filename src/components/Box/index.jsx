@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import icon_edit from "../../assets/icons/edit.png";
+import icon_delete from "../../assets/icons/delete.png";
+
 const Box = () => {
   const [lista, setLista] = useState([
     { id: 0, nome: "arroz" },
@@ -14,6 +17,12 @@ const Box = () => {
   const [idSelecionado, setIdSelecionado] = useState(null);
 
   const handleAlterarInput = (e) => {
+    if (input.length === 55) {
+      handleMostrarDisclaimer(
+        true,
+        `O item deve ter no máximo 55 caracteres. ${input.length} totais.`
+      );
+    }
     setInput(e.target.value);
   };
 
@@ -126,22 +135,24 @@ const Box = () => {
         ) : (
           lista.map((item) => (
             <div
-              className="py-2 border-dotted border-b border-[#dadada]"
+              className="py-4 border-dotted border-b border-[#dadada] flex justify-between"
               key={item.id}
             >
-              {item.nome}{" "}
-              <button
-                onClick={() => handleEditarItem(item.id)}
-                className="bg-[#4bc9ff] outline-0 text-xs font-bold	hover:bg-[#6cd3ff] text-white rounded-[1.25rem] px-2 mx-0.5 h-[20px] w-auto box-content align-middle"
-              >
-                editar
-              </button>
-              <button
-                onClick={() => handleRemoverItem(item.id)}
-                className="bg-[#ff4b4b] outline-0 text-xs font-bold	hover:bg-[#ff6262] text-white rounded-[1.25rem] px-2 mx-0.5 h-[20px] w-auto box-content align-middle"
-              >
-                excluir
-              </button>
+              <div className="flex overflow-hidden">{item.nome}</div>
+              <div className="flex justify-between max-w-[140px]">
+                <button
+                  onClick={() => handleEditarItem(item.id)}
+                  className="bg-[#4bc9ff] outline-0 text-xs font-bold	hover:bg-[#6cd3ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 w-auto box-content align-middle"
+                >
+                  <img src={icon_edit} alt="editar" title="editar" />
+                </button>
+                <button
+                  onClick={() => handleRemoverItem(item.id)}
+                  className="bg-[#ff4b4b] outline-0 text-xs font-bold	hover:bg-[#ff6262] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 w-auto box-content align-middle"
+                >
+                  <img src={icon_delete} alt="excluir" title="excluir" />
+                </button>
+              </div>
             </div>
           ))
         )}
@@ -173,14 +184,14 @@ const Box = () => {
         />
         <button
           onClick={handleBotaoAdicionar}
-          className="bg-[#4baeff] outline-0	hover:bg-[#62b8ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
+          className="bg-[#4baeff] text-xs font-bold outline-0	hover:bg-[#62b8ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
         >
           {modoEdicao ? "Confirmar alteração" : "Adicionar"}
         </button>
         {input && (
           <button
             onClick={handleCancelar}
-            className="bg-[#a8a8a8] outline-0 hover:bg-[#b1b1b1] ml-[0.625rem] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
+            className="bg-[#a8a8a8] text-xs font-bold outline-0 hover:bg-[#b1b1b1] ml-[0.625rem] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
           >
             Cancelar
           </button>
