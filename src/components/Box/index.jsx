@@ -19,13 +19,13 @@ const Box = () => {
   const campo_texto = useRef();
 
   const handleAlterarInput = (e) => {
-    if (input.length === 55) {
-      handleMostrarDisclaimer(
-        true,
-        `O item deve ter no máximo 55 caracteres. ${input.length} totais.`
-      );
-    }
     setInput(e.target.value);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handleBotaoAdicionar();
+    }
   };
 
   const limparInput = () => {
@@ -61,6 +61,15 @@ const Box = () => {
     // verifica se o input está vazio ou se possui apenas espaços
     if (!input || /^\s+$/.test(input)) {
       handleInputVazio();
+      return;
+    }
+
+    // verifica limite de texto no input
+    if (input.length >= 55) {
+      handleMostrarDisclaimer(
+        true,
+        `O item deve ter no máximo 55 caracteres. ${input.length} totais.`
+      );
       return;
     }
 
@@ -128,7 +137,9 @@ const Box = () => {
       ...prevState,
       { id: ultimoIdUsado + 1, nome: input },
     ]);
+
     limparInput();
+    handleFecharDisclaimer();
   };
 
   return (
@@ -185,6 +196,7 @@ const Box = () => {
           placeholder="Adicione um novo item"
           value={input}
           onChange={(e) => handleAlterarInput(e)}
+          onKeyDown={(e) => handleKeyDown(e)}
           ref={campo_texto}
         />
         <button
