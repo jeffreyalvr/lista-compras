@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App w-full h-full">
       <Header />
-      <div className="flex justify-center items-center px-[3rem]">
+      <div className="flex justify-center items-center px-[1.5rem]">
         <Box />
       </div>
     </div>
