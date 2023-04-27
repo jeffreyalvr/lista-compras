@@ -66,10 +66,10 @@ const Box = () => {
     }
 
     // verifica limite de texto no input
-    if (input.length > 55) {
+    if (input.length > 125) {
       handleMostrarDisclaimer(
         true,
-        `O item deve ter no máximo 55 caracteres. ${input.length} totais.`
+        `O item deve ter no máximo 125 caracteres. ${input.length} totais.`
       );
       return;
     }
