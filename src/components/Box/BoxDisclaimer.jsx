@@ -1,5 +1,7 @@
 import React from "react";
 
+import icon_close from "../../assets/icons/close.png";
+
 const BoxDisclaimer = ({
   modoEdicao,
   mensagemDisclaimer,
@@ -16,9 +18,10 @@ const BoxDisclaimer = ({
       <span>{mensagemDisclaimer || "Algo deu errado"} </span>
       <button
         onClick={handleFecharDisclaimer}
-        className="bg-[#a1a1a1] outline-1 text-xs font-bold	hover:bg-[#b8b8b8] text-white rounded-[1.25rem] h-[24px] w-[24px] box-content flex flex-col justify-center items-center"
+        className="bg-[#a1a1a1] outline-1 rounded-[1.25rem]	hover:bg-[#b8b8b8] h-[25px] w-[25px] flex items-center justify-center"
+        title="Fechar"
       >
-        x
+        <img src={icon_close} alt="x" />
       </button>
     </div>
   );
