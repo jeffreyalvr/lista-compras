@@ -143,7 +143,7 @@ const Box = () => {
   };
 
   return (
-    <div className="animate-move-up w-[43rem] border border-[#dadada] rounded-lg my-10">
+    <div className="animate-move-up max-w-[43rem] w-[43rem] border border-[#dadada] rounded-lg my-10">
       <div className="p-[1.8rem]">
         {lista.length <= 0 ? (
           <span>A lista de itens está vazia.</span>
