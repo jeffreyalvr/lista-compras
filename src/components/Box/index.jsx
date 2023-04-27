@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 
-import icon_edit from "../../assets/icons/edit.png";
-import icon_delete from "../../assets/icons/delete.png";
+import BoxList from "./BoxList";
+import BoxDisclaimer from "./BoxDisclaimer";
+import BoxFooter from "./BoxFooter";
 
 const Box = () => {
   const [lista, setLista] = useState([
@@ -65,7 +66,7 @@ const Box = () => {
     }
 
     // verifica limite de texto no input
-    if (input.length >= 55) {
+    if (input.length > 55) {
       handleMostrarDisclaimer(
         true,
         `O item deve ter no máximo 55 caracteres. ${input.length} totais.`
@@ -149,73 +150,31 @@ const Box = () => {
           <span>A lista de itens está vazia.</span>
         ) : (
           lista.map((item) => (
-            <div
-              className="py-4 border-dotted border-b border-[#dadada] flex flex-col sm:flex-row justify-between"
+            <BoxList
+              handleEditarItem={handleEditarItem}
+              handleRemoverItem={handleRemoverItem}
+              item={item}
               key={item.id}
-            >
-              <div className="flex overflow-hidden py-4 sm:py-0">
-                {item.nome}
-              </div>
-              <div className="flex md:max-w-[140px]">
-                <button
-                  onClick={() => handleEditarItem(item.id)}
-                  className="bg-[#4bc9ff] outline-1 text-xs font-bold hover:bg-[#6cd3ff] w-[50%] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 box-content flex flex-col justify-content items-center"
-                >
-                  <img src={icon_edit} alt="editar" title="editar" />
-                </button>
-                <button
-                  onClick={() => handleRemoverItem(item.id)}
-                  className="bg-[#ff4b4b] outline-1 text-xs font-bold hover:bg-[#ff6262] w-[50%] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem] mx-1 box-content flex flex-col justify-content items-center"
-                >
-                  <img src={icon_delete} alt="excluir" title="excluir" />
-                </button>
-              </div>
-            </div>
+            />
           ))
         )}
       </div>
       {mostrarDisclaimer ? (
-        <div
-          className={`animate-fade-in border-t border-[#dadada] p-[1.8rem] flex justify-between ${
-            modoEdicao
-              ? "bg-[#f4faff] text-[steelblue]"
-              : "bg-[#fff4f4] text-[firebrick]"
-          }`}
-        >
-          <span>{mensagemDisclaimer || "Algo deu errado"} </span>
-          <button
-            onClick={handleFecharDisclaimer}
-            className="bg-[#a1a1a1] outline-1 text-xs font-bold	hover:bg-[#b8b8b8] text-white rounded-[1.25rem] h-[20px] w-[20px] box-content align-middle"
-          >
-            x
-          </button>
-        </div>
-      ) : null}
-      <div className="border-t border-[#dadada] p-[1.8rem]">
-        <input
-          type="text"
-          className="w-full py-[0.625rem] px-[1.25rem] outline-1 mb-[0.938rem] rounded-[1.25rem] border border-[rgba(218, 218, 218, 0.466)]"
-          placeholder="Adicione um novo item"
-          value={input}
-          onChange={(e) => handleAlterarInput(e)}
-          onKeyDown={(e) => handleKeyDown(e)}
-          ref={campo_texto}
+        <BoxDisclaimer
+          modoEdicao={modoEdicao}
+          mensagemDisclaimer={mensagemDisclaimer}
+          handleFecharDisclaimer={handleFecharDisclaimer}
         />
-        <button
-          onClick={handleBotaoAdicionar}
-          className="bg-[#4baeff] text-xs font-bold outline-1	hover:bg-[#62b8ff] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
-        >
-          {modoEdicao ? "Confirmar alteração" : "Adicionar"}
-        </button>
-        {input && (
-          <button
-            onClick={handleCancelar}
-            className="bg-[#a8a8a8] text-xs font-bold outline-1 hover:bg-[#b1b1b1] ml-[0.625rem] text-white rounded-[1.25rem] py-[0.625rem] px-[1.25rem]"
-          >
-            Cancelar
-          </button>
-        )}
-      </div>
+      ) : null}
+      <BoxFooter
+        handleAlterarInput={handleAlterarInput}
+        handleKeyDown={handleKeyDown}
+        handleCancelar={handleCancelar}
+        handleBotaoAdicionar={handleBotaoAdicionar}
+        input={input}
+        campo_texto={campo_texto}
+        modoEdicao={modoEdicao}
+      />
     </div>
   );
 };
