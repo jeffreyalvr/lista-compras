@@ -20,7 +20,7 @@ Aplicação para inclusão, edição e remoção de itens para compras.
 ![2](https://user-images.githubusercontent.com/17326060/235678022-72b7a676-675a-481e-bb43-53327424cabf.png)
 
 [ Tela de listagem dos itens em dispositivos móveis ]
-![3](https://user-images.githubusercontent.com/17326060/235682272-8288959c-12c4-420d-ab19-90c434a8e95b.png)
+![3](https://user-images.githubusercontent.com/17326060/235682520-07187426-bad3-422b-a88f-6782ffc7cc6b.png)
 
 ## Acesso direto ao projeto em produção
 
