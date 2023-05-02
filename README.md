@@ -1,4 +1,4 @@
-## Nome do Projeto: Lista de Compras
+#### Nome do Projeto: Lista de Compras
 
 ## Informações gerais
 
@@ -13,20 +13,14 @@ Aplicação para inclusão, edição e remoção de itens para compras.
 
 ### Capturas de tela
 
-<p align="center">
 [ Tela de listagem dos itens ]
 ![1](https://user-images.githubusercontent.com/17326060/235677951-9625970e-e4a3-4e86-995e-649d1cee81de.png)
-</p>
 
-<p align="center">
 [ Tela de modificação de um item ]
 ![2](https://user-images.githubusercontent.com/17326060/235678022-72b7a676-675a-481e-bb43-53327424cabf.png)
-</p>
 
-<p align="center">
 [ Tela de listagem dos itens em dispositivos móveis ]
-![3](https://user-images.githubusercontent.com/17326060/235678742-9c4475ff-0c3e-471b-92b8-5dd92bb7a663.png)
-</p>
+![3](https://user-images.githubusercontent.com/17326060/235678742-9c4475ff-0c3e-471b-92b8-5dd92bb7a663.png | width=350)
 
 ## Acesso direto ao projeto em produção
 
