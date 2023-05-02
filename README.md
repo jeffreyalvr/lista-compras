@@ -25,7 +25,7 @@ Aplicação para inclusão, edição e remoção de itens para compras.
 
 <p align="center">
 [ Tela de listagem dos itens em dispositivos móveis ]
-![3](https://user-images.githubusercontent.com/17326060/235678742-9c4475ff-0c3e-471b-92b8-5dd92bb7a663.png | width=350)
+![3](https://user-images.githubusercontent.com/17326060/235678742-9c4475ff-0c3e-471b-92b8-5dd92bb7a663.png)
 </p>
 
 ## Acesso direto ao projeto em produção
@@ -40,15 +40,15 @@ https://lista-compras-henna.vercel.app/
 3. Navegue até a pasta raiz do projeto e abra-a utilizando um terminal ou prompt de comando de sua escolha;
 4. Utilize os seguintes comandos para suas operações.
 
-a. Instalação dos pacotes utilizados pela aplicação:
+4.1. Instalação dos pacotes utilizados pela aplicação:
 
 `npm install`
 
-b. Iniciação do servidor:
+4.2. Iniciação do servidor:
 
 `npm run dev`  
 
-c. Por fim, acesse a aplicação global por meio da seguinte URL:
+4.3. Por fim, acesse a aplicação global por meio da seguinte URL:
 
 `localhost:5173`
 
