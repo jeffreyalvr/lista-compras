@@ -3,14 +3,14 @@ import React from "react";
 import icon_close from "../../assets/icons/close.png";
 
 const BoxDisclaimer = ({
-  modoEdicao,
+  tipoDisclaimer,
   mensagemDisclaimer,
   handleFecharDisclaimer,
 }) => {
   return (
     <div
       className={`animate-fade-in border-t border-[#dadada] p-[1.8rem] flex justify-between ${
-        modoEdicao
+        tipoDisclaimer === "info"
           ? "bg-[#f4faff] text-[steelblue]"
           : "bg-[#fff4f4] text-[firebrick]"
       }`}

@@ -14,6 +14,7 @@ const Box = () => {
   const [input, setInput] = useState("");
   const [mostrarDisclaimer, setMostrarDisclaimer] = useState(false);
   const [mensagemDisclaimer, setMensagemDisclaimer] = useState("");
+  const [tipoDisclaimer, setTipoDisclaimer] = useState("alerta");
   const [modoEdicao, setModoEdicao] = useState(false);
   const [idSelecionado, setIdSelecionado] = useState(null);
 
@@ -37,8 +38,9 @@ const Box = () => {
     setModoEdicao(status);
   };
 
-  const handleMostrarDisclaimer = (status, mensagem) => {
+  const handleMostrarDisclaimer = (status, tipoDisclaimer, mensagem) => {
     setMensagemDisclaimer(mensagem);
+    setTipoDisclaimer(tipoDisclaimer);
     setMostrarDisclaimer(status);
   };
 
@@ -48,14 +50,18 @@ const Box = () => {
 
   const handleVerificaLista = () => {
     if (lista.find((item) => item.nome === input)) {
-      handleMostrarDisclaimer(true, `Já há o item '${input}' na lista!`);
+      handleMostrarDisclaimer(
+        true,
+        "alerta",
+        `Já há o item '${input}' na lista!`
+      );
       return;
     }
     handleAdicionarItem();
   };
 
   const handleInputVazio = () => {
-    handleMostrarDisclaimer(true, "O campo não pode ficar vazio!");
+    handleMostrarDisclaimer(true, "alerta", "O campo não pode ficar vazio!");
   };
 
   const handleBotaoAdicionar = () => {
@@ -69,6 +75,7 @@ const Box = () => {
     if (input.length > 125) {
       handleMostrarDisclaimer(
         true,
+        "alerta",
         `O item deve ter no máximo 125 caracteres. ${input.length} totais.`
       );
       return;
@@ -101,6 +108,7 @@ const Box = () => {
 
     handleMostrarDisclaimer(
       true,
+      "info",
       "Digite um novo nome para o item no campo abaixo."
     );
 
@@ -161,8 +169,8 @@ const Box = () => {
       </div>
       {mostrarDisclaimer ? (
         <BoxDisclaimer
-          modoEdicao={modoEdicao}
           mensagemDisclaimer={mensagemDisclaimer}
+          tipoDisclaimer={tipoDisclaimer}
           handleFecharDisclaimer={handleFecharDisclaimer}
         />
       ) : null}
