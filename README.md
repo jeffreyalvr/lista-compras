@@ -1,17 +1,17 @@
 ## Lista de Compras
 
-### Informações gerais
+## Informações gerais
 
-#### Descrição
+### Descrição
 
 Aplicação para inclusão, edição e remoção de itens para compras.
 
-#### Tecnologias utilizadas
+### Tecnologias utilizadas
 
 1. React JS + Vite;
 2. Tailwind;
 
-#### Capturas de tela
+### Capturas de tela
 
 [ Tela de listagem dos itens ]
 ![1](https://user-images.githubusercontent.com/17326060/235677951-9625970e-e4a3-4e86-995e-649d1cee81de.png)
@@ -22,12 +22,12 @@ Aplicação para inclusão, edição e remoção de itens para compras.
 [ Tela de listagem dos itens em dispositivos móveis ]
 ![3](https://user-images.githubusercontent.com/17326060/235678742-9c4475ff-0c3e-471b-92b8-5dd92bb7a663.png)
 
-### Acesso direto ao projeto em produção
+## Acesso direto ao projeto em produção
 
 Para testar o projeto em produção, acesse o seguinte link hospedado na plataforma Vercel:
 https://lista-compras-henna.vercel.app/
 
-### Acesso por meio de instalação local
+## Acesso por meio de instalação local
 
 1. Baixe o projeto pelo GitHub ou realize um clone do mesmo;
 2. Será necessário possuir o `Node` e `npm` instalados em sua máquina de forma global;
