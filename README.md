@@ -1,4 +1,4 @@
-## Lista de Compras
+#### Lista de Compras
 
 ## Informações gerais
 
