@@ -32,9 +32,18 @@ https://lista-compras-henna.vercel.app/
 1. Baixe o projeto pelo GitHub ou realize um clone do mesmo;
 2. Será necessário possuir o `Node` e `npm` instalados em sua máquina de forma global;
 3. Navegue até a pasta raiz do projeto e abra-a utilizando um terminal ou prompt de comando de sua escolha;
-4. Utilize os seguintes comandos para suas operações.
-4.1. Instalação dos pacotes utilizados pela aplicação: `npm install`
-4.2. Iniciação do servidor: `npm run dev`  
-4.3. Por fim, acesse a aplicação global por meio da seguinte URL: `localhost:5173`
+4. Utilize os seguintes comandos para suas operações;
+
+4.1. Instalação dos pacotes utilizados pela aplicação:
+
+`npm install`
+
+4.2. Iniciação do servidor:
+
+`npm run dev`
+
+4.3. Por fim, acesse a aplicação global por meio da seguinte URL:
+
+`localhost:5173`
 
 `Atenção`: Observe que a porta poderá ser modificada pelo Vite em caso dela já estar em uso, neste caso, verifique a saída de texto no terminal e abra o link através do `CTRL + clique esquerdo do mouse".
